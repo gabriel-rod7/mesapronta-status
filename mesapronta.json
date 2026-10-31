@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.3.0",
+  "versao_atual": "3.5.0",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.3.0: começo guiado com pedido de teste, tela do celular mais fácil (barra embaixo e pedido rápido na mesa) e melhorias gerais. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus produtos, mesas e vendas continuam.",
+  "mensagem": "Versão 3.5.0: Financeiro (contas a pagar e quanto sobrou no mês), cardápio online de delivery com pedidos pela internet e o programa ligado à internet (liga em Cardápio online). Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus produtos, mesas e vendas continuam.",
   "revogados": [],
   "url_compra": "https://pay.kirvano.com/59aa7b46-c2f9-40cf-9f7d-a187f4061bbd"
 }
