@@ -3,5 +3,5 @@
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
   "mensagem": "Versão 3.7.0: comprar o MesaPronta ficou mais fácil — R$ 247 por 2 anos, no Pix ou em até 12x no cartão, e o sistema libera sozinho assim que o pagamento é aprovado. O cardápio online (pedidos de delivery pelo link) agora é uma assinatura de R$ 19,99 por mês, grátis durante o teste; assine pelo menu Cardápio online. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
-  "url_compra": "https://pay.kirvano.com/59aa7b46-c2f9-40cf-9f7d-a187f4061bbd"
+  "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
