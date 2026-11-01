@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.8.0",
+  "versao_atual": "3.9.0",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.8.0: cardápio da mesa e cardápio online com visual novo, e o sistema funciona também pela internet: garçom, cozinha e caixa em qualquer rede e o cliente na mesa até pelo 4G. O Wi-Fi continua: se a internet cair, quem está no Wi-Fi continua trabalhando. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.9.0: cupom de desconto e fidelidade (selos ou cashback), frete por km e app do entregador, ficha técnica com o lucro de cada produto, entrada de compras pelo XML da nota, contas a receber e o resultado do mês, relatórios que respondem perguntas, totem de pedidos, balança por etiqueta, fila e reservas pelo celular e nota fiscal (módulo opcional). Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
