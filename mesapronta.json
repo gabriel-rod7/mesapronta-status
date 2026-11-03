@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.9.4",
+  "versao_atual": "3.9.5",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.9.4: agora dá para EXCLUIR produto, categoria e adicional (abra o cadastro e clique em \"Excluir\"); os inativos ficam escondidos (\"Mostrar inativos\"). Inclui a 3.9.3 (impressoras instaladas no Windows na lista) e a 3.9.2 (um e-mail = uma conta). Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.9.5: a impressão \"pelo navegador\" sempre abre a janela de impressão para escolher a impressora. Inclui a 3.9.4 (excluir produto, categoria e adicional), a 3.9.3 (impressoras do Windows na lista) e a 3.9.2 (um e-mail = uma conta). Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
