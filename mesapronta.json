@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.9.7",
+  "versao_atual": "3.9.8",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.9.7: o botão \"Reimprimir cozinha\" agora imprime também os produtos sem setor de preparo, e todos os botões de imprimir usam a mesma impressora (Configurações > Impressoras). \"Pelo navegador\" sempre abre a janela de impressão. Inclui as correções da 3.9.2 a 3.9.6. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.9.8: a tela do Caixa agora mostra as mesas e as comandas em aberto, para receber, abrir e imprimir a conferência sem sair do caixa. Inclui as correções de impressão da 3.9.5 a 3.9.7. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
