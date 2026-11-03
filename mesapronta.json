@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.9.2",
+  "versao_atual": "3.9.3",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.9.2: um e-mail = uma conta. Se o e-mail do cadastro já tem conta (feita no site ou em outro computador), o sistema pede para entrar nela com a senha, e os dados vêm junto. Inclui tudo da 3.9.1: a primeira tela é \"Entrar na sua conta\" e quem não tem conta clica em \"Começar meu teste grátis\". Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.9.3: impressora USB sem complicação. Em Configurações > Impressora e nos setores, escolha \"Impressora instalada no Windows\" e a impressora na lista (não precisa mais compartilhar). Inclui a 3.9.2: um e-mail = uma conta. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
