@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.9.1",
+  "versao_atual": "3.9.2",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.9.1: a primeira tela agora é \"Entrar na sua conta\" (e-mail e senha) e, ao entrar, seus dados vêm junto para o computador. Quem não tem conta clica em \"Começar meu teste grátis\". Inclui tudo da 3.9.0: cupom e fidelidade, frete por km e app do entregador, ficha técnica com o lucro de cada produto, XML da nota, contas a receber e resultado do mês, totem, balança, fila e reservas e nota fiscal (módulo opcional). Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.9.2: um e-mail = uma conta. Se o e-mail do cadastro já tem conta (feita no site ou em outro computador), o sistema pede para entrar nela com a senha, e os dados vêm junto. Inclui tudo da 3.9.1: a primeira tela é \"Entrar na sua conta\" e quem não tem conta clica em \"Começar meu teste grátis\". Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
