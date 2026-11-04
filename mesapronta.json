@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.9.9",
+  "versao_atual": "3.9.10",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.9.9: aulas em vídeo dentro do sistema (menu \"Aulas em vídeo\") e o botão \"Aula desta tela\" em cada tela. Inclui as mesas no Caixa (3.9.8) e as correções de impressão. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.9.10: aulas em vídeo dentro do sistema, no assistente de configuração e na primeira vez em cada tela, com o botão \"Aula desta tela\" no canto. Inclui as mesas no Caixa e as correções de impressão. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
