@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.9.11",
+  "versao_atual": "3.9.12",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.9.11: mande a foto do seu cardápio para o suporte e ele é colocado direto no sistema, com preços, tamanhos e adicionais. Inclui as aulas em vídeo, as mesas no Caixa e as correções de impressão. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.9.12: frete por km — agora dá para colar a localização do restaurante (link do Google Maps ou os números) em Cardápio online > Taxa de entrega. Inclui o cardápio colocado pelo suporte, as aulas em vídeo e as mesas no Caixa. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
