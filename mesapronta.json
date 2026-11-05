@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.9.13",
+  "versao_atual": "3.9.15",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.9.13: Formação de preço (Estoque > Formação de preço) — cadastre custos fixos, impostos, taxa do cartão e o lucro que você quer; o sistema mostra o lucro líquido de cada produto e sugere o preço. Inclui a localização do restaurante no frete por km e o cardápio colocado pelo suporte. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.9.15: logo e banner no cardápio da mesa (Configurações > Cardápio digital), pratos que aparecem só em certos dias da semana, escolha obrigatória no produto (ex.: sabor do suco) e o cliente lê o QR da mesa pela câmera direto no cardápio. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
