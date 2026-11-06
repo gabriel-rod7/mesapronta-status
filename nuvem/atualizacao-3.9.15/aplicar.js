@@ -109,8 +109,10 @@ function remendar(fontes) {
     const p = x.m[1]; trocar(x.f, x.i, 0, `escolha: __mpEscolhaDe(${p}), dia_ok: __mpDiaOk(${p}), `);
   }
   // E) os 3 cardápios do cliente (mesa, online, totem) só com os pratos do dia
-  for (const x of achar(/!([\w$]+)\.por_quilo\b/, 3, 'filtro do dia').reverse()) {
-    const p = x.m[1]; trocar(x.f, x.i, x.m[0].length, `(!${p}.por_quilo && ${p}.dia_ok !== false)`);
+  // (só os .filter(p => !p.por_quilo ...) dos cardápios; os "if (!prod.por_quilo)" da balança ficam como estão)
+  for (const x of achar(/\.filter\(\s*\(?\s*([\w$]+)\s*\)?\s*=>\s*!\1\.por_quilo\b/, 3, 'filtro do dia').reverse()) {
+    const p = x.m[1], ini = x.i + x.m[0].lastIndexOf('!'), len = x.i + x.m[0].length - ini;
+    trocar(x.f, ini, len, `(!${p}.por_quilo && ${p}.dia_ok !== false)`);
   }
   // F) e mandam a escolha e os dias
   for (const x of achar(/destaque\s*:\s*!!([\w$]+)\.destaque\s*,\s*foto\s*:\s*\1\.foto\s*\|\|\s*null/, 3, 'campos publicos').reverse()) {
