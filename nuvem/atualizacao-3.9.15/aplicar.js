@@ -269,8 +269,9 @@ async function saude() {
     if (COMMIT === 'main') parar('para --com-programa passe o commit (o link do programa precisa ser fixo).');
     if (!fs.existsSync(MANIFESTO)) parar('não achei ' + MANIFESTO);
     manifestoAntes = fs.readFileSync(MANIFESTO, 'utf8');
-    const m = JSON.parse(manifestoAntes);
-    log('manifesto antes:', JSON.stringify(m));
+    const raiz = JSON.parse(manifestoAntes);
+    log('manifesto antes:', JSON.stringify(raiz));
+    const m = raiz.restaurante && typeof raiz.restaurante === 'object' ? raiz.restaurante : raiz;   // formato {"restaurante":{versao,url,sha256,tamanho}}
     const chaves = Object.keys(m);
     const kVer = chaves.find(k => /^vers/.test(k)), kUrl = chaves.find(k => /url/i.test(k)), kSha = chaves.find(k => /sha/i.test(k)), kTam = chaves.find(k => /^(tamanho|bytes|size)$/i.test(k));
     if (!kVer || !kUrl || !kSha) parar('o manifesto não tem versão/url/sha como esperado; não mexi nele.');
@@ -283,8 +284,8 @@ async function saude() {
     if (sha(exe) !== EXE.sha256 || exe.length !== EXE.bytes) parar(`o .exe baixado do GitHub não confere (sha ${sha(exe).slice(0, 16)}, ${exe.length} bytes). O código já foi trocado, mas o manifesto não.`);
     fs.copyFileSync(MANIFESTO, MANIFESTO + '.antes-3.9.15');
     m[kVer] = VERSAO; m[kUrl] = url; m[kSha] = EXE.sha256; if (kTam) m[kTam] = EXE.bytes;
-    fs.writeFileSync(MANIFESTO, JSON.stringify(m, null, 2));
-    log('manifesto agora:', JSON.stringify(m));
+    fs.writeFileSync(MANIFESTO, JSON.stringify(raiz));
+    log('manifesto agora:', JSON.stringify(raiz));
   }
   if (!precisaTrocar && !COM_PROGRAMA) { log('nada a fazer.'); return; }
   if (ENSAIO) return;
