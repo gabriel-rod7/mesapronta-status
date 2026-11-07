@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.10.0",
+  "versao_atual": "3.11.0",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.10.0: pedidos do iFood direto no sistema, opções com preço no produto (molho, adicionais, bebida do combo), \"Peça também\" na sacola do cardápio online, pedido agendado e comer no local. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.11.0: planos mensais (Essencial R$ 39,90, Profissional R$ 69,90, Master R$ 89,90), comanda paga por produto (o resto fica aberto), aba Comandas em Mesas, Início com \"Para agora\", cozinha com alergia e cancelados, e muitas melhorias. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
