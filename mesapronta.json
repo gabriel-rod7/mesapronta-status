@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.9.15",
+  "versao_atual": "3.10.0",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.9.15: logo e banner no cardápio da mesa (Configurações > Cardápio digital), pratos que aparecem só em certos dias da semana, escolha obrigatória no produto (ex.: sabor do suco) e o cliente lê o QR da mesa pela câmera direto no cardápio. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.10.0: pedidos do iFood direto no sistema, opções com preço no produto (molho, adicionais, bebida do combo), \"Peça também\" na sacola do cardápio online, pedido agendado e comer no local. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
