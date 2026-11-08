@@ -185,6 +185,7 @@ function remendar(fontes) {
     const dep = t[k];
     const stmt = `${db}.prepare("INSERT OR REPLACE INTO config (chave, valor) VALUES ('online_ativo', '1')").run()`;
     if (dep === ';' || dep === ',') trocar(x.f, k + 1, 0, ' ' + stmt + dep);   // vira a instrução seguinte (ou o próximo item da sequência com vírgula, no minificado)
+    else if (dep === '}') trocar(x.f, k, 0, '; ' + stmt + ' ');   // última instrução do bloco (no minificado: "...run(...)})")
     else { console.error('   ' + perto(t, k, 120, 60)); falhar('não entendi o fim da instrução do seed_max_prod (remendo "cardápio online ligado").'); }
   }
   });
