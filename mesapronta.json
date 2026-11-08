@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.11.0",
+  "versao_atual": "3.12.0",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.11.0: planos mensais (Essencial R$ 39,90, Profissional R$ 69,90, Master R$ 89,90), comanda paga por produto (o resto fica aberto), aba Comandas em Mesas, Início com \"Para agora\", cozinha com alergia e cancelados, e muitas melhorias. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.12.0: balcão em um passo (Receber e enviar, F3 abre a venda), toque no produto já adiciona, botão Alergia, Início com um roteiro só e o cardápio online no ar, clientes que pararam de pedir com WhatsApp pronto, menu lateral recolhível. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
