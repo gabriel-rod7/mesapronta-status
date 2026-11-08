@@ -22,6 +22,8 @@ const EXE = { nome: `MesaPronta-${VERSAO}.exe.gz`, sha256: 'aeaef978279460502f46
 
 const log = (...a) => console.log('[3.12.0]', ...a);
 const parar = (msg) => { console.error('\n[3.12.0] PAROU: ' + msg + '\nNada foi trocado no servidor.'); process.exit(1); };
+class RemendoErro extends Error {}
+const falhar = (msg) => { throw new RemendoErro(msg); };   // dentro de remendar(): as falhas são juntadas e só então o script para
 const sha = (b) => crypto.createHash('sha256').update(b).digest('hex');
 const sh = (c, o = {}) => cp.execSync(c, { stdio: ['ignore', 'pipe', 'pipe'], ...o }).toString();
 const tmpDir = (p) => fs.mkdtempSync(path.join(os.tmpdir(), p));
@@ -66,56 +68,71 @@ function remendar(fontes) {
     if (res.length !== esperado) {
       console.error(`\n[3.12.0] Remendo "${nome}": esperava ${esperado}, achei ${res.length}.`);
       for (const x of res.slice(0, 5)) console.error('   ' + path.basename(x.f) + ': ' + perto(fontes[x.f], x.i));
-      parar(`o código do servidor não está como esperado (remendo "${nome}"). Mande este texto para o suporte.`);
+      falhar(`o código do servidor não está como esperado (remendo "${nome}"). Mande este texto para o suporte.`);
     }
     return res;
   };
   const trocar = (f, i, len, novo) => { fontes[f] = fontes[f].slice(0, i) + novo + fontes[f].slice(i + len); usados.add(f); };
-  const dbAntes = (t, i, nome, alcance = 6000) => { const a = t.slice(Math.max(0, i - alcance), i); const ms = [...a.matchAll(/([\w$]+)\.prepare\(/g)]; if (!ms.length) parar(`não achei a variável do banco (remendo "${nome}").`); return ms[ms.length - 1][1]; };
+  const dbAntes = (t, i, nome, alcance = 6000) => { const a = t.slice(Math.max(0, i - alcance), i); const ms = [...a.matchAll(/([\w$]+)\.prepare\(/g)]; if (!ms.length) falhar(`não achei a variável do banco (remendo "${nome}").`); return ms[ms.length - 1][1]; };
 
   if (Object.values(fontes).some(t => t.includes(MARCA))) return { jaAplicado: true, usados };
+  const falhas = [], nl2 = '\n';
+  const tentar = (nome, fn) => { try { fn(); } catch (e) { if (!(e instanceof RemendoErro)) throw e; falhas.push(nome + ') ' + e.message); } };   // confere todos os remendos antes de parar
 
   // A) configurações novas (entram na lista aceita pelo PUT /api/config) e padrão das observações gerais
+  tentar('A', () => {
   for (const x of achar(/(obs_rapidas_gerais\s*:\s*)(['"])Sem cebola;Sem tomate;Sem gelo;Bem passado;Mal passado;Para viagem\2(\s*,?)/, 1, 'configurações')) {
     const q = x.m[2];
     trocar(x.f, x.i, x.m[0].length, `${x.m[1]}${q}Para viagem;Sem talheres${q}, toque_direto: ${q}1${q}, balcao_receber_junto: ${q}1${q}, balcao_f3_direto: ${q}1${q}, online_divulgado: ${q}0${q}${x.m[3]}`);
   }
+  });
   // B) exemplos de um sistema novo: observações por tipo de produto
+  tentar('B', () => {
   for (const x of achar(/(['"])Sem cebola;Sem tomate;Sem maionese;Ponto da carne bem passado\1/, 1, 'exemplo lanches')) trocar(x.f, x.i, x.m[0].length, `${x.m[1]}Sem cebola;Sem tomate;Sem maionese;Bem passado;Mal passado${x.m[1]}`);
   for (const x of achar(/(['"])Sem salada;Sem feij(?:ão|\\xE3o);Arroz (?:à|\\xE0) parte\1/, 1, 'exemplo pratos')) trocar(x.f, x.i, x.m[0].length, `${x.m[1]}Sem salada;Sem feijão;Arroz à parte;Bem passado${x.m[1]}`);
   for (const x of achar(/(['"])Sem gelo;Com lim(?:ão|\\xE3o);Bem gelada\1/, 1, 'exemplo bebidas')) trocar(x.f, x.i, x.m[0].length, `${x.m[1]}Sem gelo;Com limão;Bem gelada;Com canudo${x.m[1]}`);
+  });
   // C) coluna itens.sugestao
+  tentar('C', () => {
   for (const x of achar(/([\w$]+)\(\s*(['"])itens\2\s*,\s*(['"])pago_qtd\3\s*,\s*(['"])INTEGER NOT NULL DEFAULT 0\4\s*\)\s*;?/, 1, 'coluna sugestao')) {
     trocar(x.f, x.i, x.m[0].length, x.m[0] + ` ${x.m[1]}('itens', 'sugestao', 'INTEGER NOT NULL DEFAULT 0');`);
   }
+  });
   // D) ao gravar um item do pedido, guarda se veio do "Peça também"
+  tentar('D', () => {
   {
     const [x] = achar(/INSERT INTO itens \(pedido_id, produto_id, produto2_id, nome, qtd, preco_unit, adicionais, adicionais_total, obs, setor_id, lote, status, usuario_id, criado_em, tamanho, custo_unit, origem, profissional_id, entregue_em\)/, 1, 'gravar item');
     const t = fontes[x.f];
     const antes = t.slice(Math.max(0, x.i - 400), x.i);
     const ma = antes.match(/([\w$]+)\s*=\s*([\w$]+)\.prepare\(\s*[`'"]\s*$/);
-    if (!ma) { console.error('   ' + perto(t, x.i, 300, 40)); parar('não achei "variavel = banco.prepare(" antes do INSERT dos itens (remendo "gravar item").'); }
+    if (!ma) { console.error('   ' + perto(t, x.i, 300, 40)); falhar('não achei "variavel = banco.prepare(" antes do INSERT dos itens (remendo "gravar item").'); }
     const idVar = ma[1], dbVar = ma[2];
-    const loops = [...t.slice(Math.max(0, x.i - 4000), x.i).matchAll(/for\s*\(\s*(?:const|let|var)\s+(?:\[\s*)?([\w$]+)[^)]*?\bof\b/g)];
-    if (!loops.length) parar('não achei o "for ... of" dos itens (remendo "gravar item").');
+    const loops = [...t.slice(Math.max(0, x.i - 12000), x.i).matchAll(/for\s*\(\s*(?:const|let|var)\s+(?:\[\s*)?([\w$]+)[^)]*?\bof\b/g)];
+    if (!loops.length) falhar('não achei o "for ... of" dos itens (remendo "gravar item").');
     const itemVar = loops[loops.length - 1][1];
     const j = t.indexOf('.lastInsertRowid', x.i);
-    if (j < 0 || j - x.i > 1500) parar('não achei o .lastInsertRowid depois do INSERT dos itens (remendo "gravar item").');
+    if (j < 0 || j - x.i > 3000) falhar('não achei o .lastInsertRowid depois do INSERT dos itens (remendo "gravar item").');
     let k = j + '.lastInsertRowid'.length;
     while (k < t.length && /[\s)\]]/.test(t[k])) k++;
-    if (t[k] !== ';') { console.error('   ' + perto(t, k, 80, 80)); parar('o INSERT dos itens não termina com ";" como esperado (remendo "gravar item").'); }
+    if (t[k] !== ';') { console.error('   ' + perto(t, k, 80, 80)); falhar('o INSERT dos itens não termina com ";" como esperado (remendo "gravar item").'); }
     trocar(x.f, k + 1, 0, ` if (${itemVar}.sugestao) ${dbVar}.prepare('UPDATE itens SET sugestao = 1 WHERE id = ?').run(${idVar});`);
   }
+  });
   // E) pedido do cardápio online: o item da sacola leva a marca
+  tentar('E', () => {
   for (const x of achar(/opcoes\s*:\s*Array\.isArray\(\s*([\w$]+)\.opcoes\s*\)\s*\?\s*\1\.opcoes\.slice\(\s*0\s*,\s*120\s*\)\s*\.filter\(/, 1, 'itens online')) {   // só o delivery (o totem não tem .filter)
     trocar(x.f, x.i, 0, `sugestao: ${x.m[1]}.sugestao ? 1 : 0, `);
   }
+  });
   // F) resumo do cardápio online: total desde o começo e o "Peça também" do mês
+  tentar('F', () => {
   for (const x of achar(/produtos\s*:\s*([\w$]+)\.prepare\(\s*(['"`])SELECT COUNT\(\*\) n FROM produtos p JOIN categorias c ON c\.id = p\.categoria_id WHERE p\.ativo = 1 AND c\.ativo = 1 AND c\.no_cardapio = 1\2\s*\)\.get\(\)\.n/, 1, 'resumo online')) {
     const db = x.m[1];
     trocar(x.f, x.i, 0, `total: ${db}.prepare(${JSON.stringify(SQL_TOTAL_ONLINE)}).get(), sugestoes_mes: ${db}.prepare(${JSON.stringify(SQL_SUG_MES)}).get(), `);
   }
+  });
   // G) relatórios: pedidos online no período e venda sugestiva
+  tentar('G', () => {
   {
     const [x] = achar(/([\w$]+)\s*=\s*([\w$]+)\.prepare\(\s*`SELECT c\.nome, c\.telefone, COUNT\(\*\) pedidos, SUM\(p\.total\) total FROM pedidos p JOIN clientes c ON c\.id = p\.cliente_id WHERE \$\{([\w$]+)\} GROUP BY c\.id ORDER BY total DESC LIMIT 10`\s*\)\.all\(\s*([\w$]+)\s*,\s*([\w$]+)\s*\)/, 1, 'relatórios');
     const [, , DB, F, DE, ATE] = x.m;
@@ -127,41 +144,51 @@ function remendar(fontes) {
     let novo;
     if (sep === ',') novo = `__mpOnline = ${DB}.prepare(${q1}).get(${DE}, ${ATE}), __mpSug = ${DB}.prepare(${q2}).get(${DE}, ${ATE}), `;
     else if (sep === ';') novo = ` const __mpOnline = ${DB}.prepare(${q1}).get(${DE}, ${ATE}); const __mpSug = ${DB}.prepare(${q2}).get(${DE}, ${ATE});`;
-    else { console.error('   ' + perto(t, k, 80, 80)); parar('não entendi o que vem depois da consulta dos melhores clientes (remendo "relatórios").'); }
+    else { console.error('   ' + perto(t, k, 80, 80)); falhar('não entendi o que vem depois da consulta dos melhores clientes (remendo "relatórios").'); }
     trocar(x.f, k + 1, 0, novo);
     const t2 = fontes[x.f];
     const re = /melhoresClientes\s*(?::\s*[\w$]+)?\s*,/g; re.lastIndex = k + 1 + novo.length;
     const mr = re.exec(t2);
-    if (!mr || mr.index - k > 4000) parar('não achei "melhoresClientes" no retorno dos relatórios (remendo "relatórios").');
+    if (!mr || mr.index - k > 4000) falhar('não achei "melhoresClientes" no retorno dos relatórios (remendo "relatórios").');
     trocar(x.f, mr.index, 0, 'online: __mpOnline, sugestoes: __mpSug, ');
   }
+  });
   // H) rota nova: clientes que pararam de pedir (ao lado da busca de clientes)
+  tentar('H', () => {
   {
     const [x] = achar(/([\w$]+)\(\s*(['"])GET\2\s*,\s*(['"])\/api\/clientes\/busca\3\s*,\s*(?:async\s*)?\(\s*([\w$]+)\s*[^)]*\)\s*=>\s*\{?\s*(?:return\s*)?\(?\s*([\w$]+)\(\s*\4\s*,\s*(['"])caixa\6\s*\)/, 1, 'rota parados');
     const rota = x.m[1], req = x.m[4], auth = x.m[5];
     const depois = fontes[x.f].slice(x.i, x.i + 900);
     const mdb = depois.match(/([\w$]+)\.prepare\(/);
-    if (!mdb) parar('não achei o banco na busca de clientes (remendo "rota parados").');
+    if (!mdb) falhar('não achei o banco na busca de clientes (remendo "rota parados").');
     const db = mdb[1];
     trocar(x.f, x.i, 0, `${rota}('GET', '/api/clientes/parados', (${req}, __b, __p, __q) => { ${auth}(${req}, 'caixa'); const dias = Math.max(7, Math.min(365, Number(__q && __q.dias) || 30)); return ${db}.prepare(${JSON.stringify(SQL_PARADOS)}).all('-' + dias + ' days'); });\n`);
   }
+  });
   // I) Início: quantos clientes sumiram
+  tentar('I', () => {
   {
     const [x] = achar(/(primeirosPassos\s*(?::\s*[\w$]+)?\s*,)(\s*licenca\s*:)/, 1, 'início');
     const db = dbAntes(fontes[x.f], x.i, 'início');
     trocar(x.f, x.i + x.m[1].length, 0, ` clientes_parados: (() => { try { return ${db}.prepare(${JSON.stringify(SQL_PARADOS_N)}).get().n; } catch (e) { return 0; } })(),`);
   }
-  // J) loja nova já nasce com o cardápio online ligado (junto do seed de exemplo)
+  });
+  // J) loja nova já nasce com o cardápio online ligado (logo depois do seed_max_prod, no seed de exemplo)
+  tentar('J', () => {
   {
     const [x] = achar(/([\w$]+)\.prepare\(\s*(['"])INSERT OR REPLACE INTO config \(chave, valor\) VALUES \(\?, \?\)\2\s*\)\.run\(\s*(['"])seed_max_prod\3/, 1, 'cardápio online ligado');
     const t = fontes[x.f]; const db = x.m[1];
-    let k = x.i - 1; while (k >= 0 && /\s/.test(t[k])) k--;
-    const antes = t[k];
+    // anda até o fim da chamada .run(...), fechando parênteses e pulando o que está entre aspas
+    let k = x.i + x.m[0].length, prof = 1, q = null;
+    for (; k < t.length && prof > 0; k++) { const ch = t[k]; if (q) { if (ch === '\\') k++; else if (ch === q) q = null; } else if (ch === "'" || ch === '"' || ch === '`') q = ch; else if (ch === '(') prof++; else if (ch === ')') prof--; }
+    while (k < t.length && /\s/.test(t[k])) k++;
+    const dep = t[k];
     const stmt = `${db}.prepare("INSERT OR REPLACE INTO config (chave, valor) VALUES ('online_ativo', '1')").run()`;
-    if (antes === ',' || antes === '(') trocar(x.f, x.i, 0, stmt + ', ');
-    else if (antes === ';' || antes === '{' || antes === '}') trocar(x.f, x.i, 0, stmt + '; ');
-    else { console.error('   ' + perto(t, x.i, 120, 60)); parar('não entendi o trecho antes do seed_max_prod (remendo "cardápio online ligado").'); }
+    if (dep === ';' || dep === ',') trocar(x.f, k + 1, 0, ' ' + stmt + dep);   // vira a instrução seguinte (ou o próximo item da sequência com vírgula, no minificado)
+    else { console.error('   ' + perto(t, k, 120, 60)); falhar('não entendi o fim da instrução do seed_max_prod (remendo "cardápio online ligado").'); }
   }
+  });
+  if (falhas.length) parar(`${falhas.length} remendo(s) não bateram com o código do servidor:` + nl2 + falhas.map(f => '  - ' + f).join(nl2) + nl2 + 'Mande este texto para o suporte.');
   for (const f of usados) fontes[f] += `\n${MARCA}\n`;
   return { jaAplicado: false, usados };
 }
@@ -254,7 +281,8 @@ async function saude() {
   catch (e) { if (process.platform !== 'win32') throw e; sh(`tar --force-local -xzf ${JSON.stringify(pacoteTelas)} -C ${JSON.stringify(telasDir)}`); }   // ensaio no Windows (tar do Git lê "C:" como servidor)
 
   // 1) confere o que está no ar
-  const fontesVivas = Object.fromEntries(listarJs(path.join(RAIZ, 'base', 'src')).map(f => [f, fs.readFileSync(f, 'utf8')]));
+  const pastasFonte = [path.join(RAIZ, 'base', 'src'), path.join(RAIZ, 'produtos', 'restaurante')].filter(d => fs.existsSync(d));   // o exemplo (seed) do restaurante fica em produtos/restaurante/produto.js
+  const fontesVivas = Object.fromEntries(pastasFonte.flatMap(d => listarJs(d)).map(f => [f, fs.readFileSync(f, 'utf8')]));
   const versaoArq = Object.keys(fontesVivas).find(f => path.basename(f) === 'versao.js');
   const versaoAtual = versaoArq ? (fontesVivas[versaoArq].match(/['"](\d+\.\d+\.\d+)['"]/) || [])[1] : null;
   log('versão no servidor:', versaoAtual || '(não achei)');
