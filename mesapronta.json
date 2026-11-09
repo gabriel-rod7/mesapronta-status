@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.12.0",
+  "versao_atual": "3.12.1",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.12.0: balcão em um passo (Receber e enviar, F3 abre a venda), toque no produto já adiciona, botão Alergia, Início com um roteiro só e o cardápio online no ar, clientes que pararam de pedir com WhatsApp pronto, menu lateral recolhível. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.12.1: o MesaPronta abre sem a janela preta (cmd). Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
