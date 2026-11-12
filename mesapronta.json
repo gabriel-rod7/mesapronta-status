@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.13.0",
+  "versao_atual": "3.14.0",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.13.0: validade e armazenamento nos ingredientes, etiqueta ANVISA na entrada de estoque (75 x 50 mm), etiqueta de preço com código de barras, cadastro completo do produto (código de barras e SKU) e produto kit. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
+  "mensagem": "Versão 3.14.0: cozinha com etapas e responsáveis (opcional). Ex.: Preparando com 2 montadores e Finalizando no forno; cada pizza mostra quem está com ela. Para atualizar: baixe, extraia o zip e abra o MesaPronta.exe. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
