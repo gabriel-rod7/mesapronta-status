@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.15.1",
+  "versao_atual": "3.15.2",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.15.1: a observação da comanda/mesa sai na impressão da cozinha e do bar; corte do papel configurável (Configurações > Impressoras). Também: atualização no meio da tela e instalação automática, etapas e etiqueta na cozinha. Seus dados continuam.",
+  "mensagem": "Versão 3.15.2: instalação mais firme (troca o programa mesmo se o antigo estiver aberto). Também: observação da comanda no bar, corte do papel configurável, atualização no meio da tela, etapas e etiqueta na cozinha. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
