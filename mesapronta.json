@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.15.3",
+  "versao_atual": "3.15.4",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.15.3: corte do papel e letra grande também nas impressoras Bematech/Daruma no modo nativo (Configurações > Impressoras > Corte do papel > Modo 3). Instalação mais firme. Seus dados continuam.",
+  "mensagem": "Versão 3.15.4: o próprio programa baixa e instala as atualizações (também sem conta ligada). Corte do papel: Modo 3 como antes e novo Modo 4. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
 }
