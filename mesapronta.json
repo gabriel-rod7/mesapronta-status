@@ -3,5 +3,11 @@
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
   "mensagem": "Versão 3.15.4: o próprio programa baixa e instala as atualizações (também sem conta ligada). Corte do papel: Modo 3 como antes e novo Modo 4. Seus dados continuam.",
   "revogados": [],
-  "url_compra": "https://app.mesapronta.net/comprar?p=restaurante"
+  "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
+  "exe": {
+    "versao": "3.15.4",
+    "url": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/195c4d976d8224e5a83af0e929bfb0c7c59a28c2/download/MesaPronta-3.15.4.exe.gz",
+    "sha256": "f74e10afe9600ba03fbb84c49dedb582f101a874640ac138390f152140ab8578",
+    "tamanho": 96297984
+  }
 }
