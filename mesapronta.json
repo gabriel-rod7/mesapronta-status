@@ -5,9 +5,9 @@
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
   "exe": {
-    "versao": "3.15.6",
-    "url": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/ed5419ae334e42d0c863bf1b5a9b22fe23a159e7/download/MesaPronta-3.15.6.exe.gz",
-    "sha256": "e556e9797adc4fc3f6ea9a773a7fb77faa457f000511b984551cdab9ab6579a6",
-    "tamanho": 96304128
+    "versao": "3.15.7",
+    "url": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/d096f63bfe8ae1be0f60ec585542a5fca8e84e7a/download/MesaPronta-3.15.7.exe.gz",
+    "sha256": "56690327b431bc6182788654909e5c7fd9eaef723a5d3a8aae2e9166a93728ac",
+    "tamanho": 96310272
   }
 }
