@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.15.5",
+  "versao_atual": "3.15.6",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.15.5: promoção/happy hour também em produto com tamanhos (P/M/G), happy hour que passa da meia-noite, e o preço muda sozinho nas telas abertas quando a promoção começa. Seus dados continuam.",
+  "mensagem": "Versão 3.15.6: na etiqueta de preço você escolhe como sai a descrição do produto (não imprimir, curta, média ou completa) e as etiquetas se ajustam ao tamanho do papel. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
   "exe": {
