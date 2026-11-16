@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.15.6",
+  "versao_atual": "3.15.7",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.15.6: na etiqueta de preço você escolhe como sai a descrição do produto (não imprimir, curta, média ou completa) e as etiquetas se ajustam ao tamanho do papel. Seus dados continuam.",
+  "mensagem": "Versão 3.15.7: cliente do cadastro na venda manual e no balcão, bairro digitado no cadastro de cliente, máscara de telefone e, na etiqueta de preço, a escolha de como sai a descrição. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
   "exe": {
