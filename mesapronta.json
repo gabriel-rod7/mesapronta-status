@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.15.7",
+  "versao_atual": "3.16.0",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.15.7: cliente do cadastro na venda manual e no balcão, bairro digitado no cadastro de cliente, máscara de telefone e, na etiqueta de preço, a escolha de como sai a descrição. Seus dados continuam.",
+  "mensagem": "Versão 3.16.0: pedidos do 99Food direto no sistema (Cardápio online > 99Food). Também: cliente do cadastro na venda manual e no balcão, máscara de telefone e a descrição na etiqueta de preço. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
   "exe": {
