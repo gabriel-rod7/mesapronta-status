@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.17.0",
+  "versao_atual": "3.17.1",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.17.0: pedidos do Compre Sem Fila direto no Delivery, com aba própria (Cardápio online > Compre Sem Fila). Seus dados continuam.",
+  "mensagem": "Versão 3.17.1: comanda com o cliente do cadastro (no caixa e no celular do garçom), importar clientes de planilha e opção de esconder a gorjeta. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
   "exe": {
