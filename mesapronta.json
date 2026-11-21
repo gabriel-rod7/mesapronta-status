@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.17.1",
+  "versao_atual": "3.17.2",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.17.1: comanda com o cliente do cadastro (no caixa e no celular do garçom), importar clientes de planilha e opção de esconder a gorjeta. Seus dados continuam.",
+  "mensagem": "Versão 3.17.2: escolha o tamanho da letra da impressão (normal, grande ou extra grande) em Configurações › Impressoras. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
   "exe": {
