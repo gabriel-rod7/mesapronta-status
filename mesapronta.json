@@ -1,7 +1,7 @@
 {
-  "versao_atual": "3.17.3",
+  "versao_atual": "3.17.4",
   "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta.zip",
-  "mensagem": "Versão 3.17.3: combo com bebida à escolha baixa o estoque certo, o tamanho vem primeiro ao abrir o produto no cardápio online, e as plaquinhas QR voltam a imprimir. Seus dados continuam.",
+  "mensagem": "Versão 3.17.4: impressão com os itens em negrito e mais espaçados, reservas com 2ª sessão no dia, sabor esgotado some do combo e o Delivery mostra o que já está pronto na cozinha. Seus dados continuam.",
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
   "exe": {
