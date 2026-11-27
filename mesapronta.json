@@ -5,14 +5,20 @@
   "revogados": [],
   "url_compra": "https://app.mesapronta.net/comprar?p=restaurante",
   "exe": {
-    "versao": "3.17.4",
-    "url": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/ee3bd9e393ee37006c6163abc16d6f5af853a7a1/download/MesaPronta-3.17.4.exe.gz",
-    "sha256": "073c3fe9130aae6a8e0f4acae9044e2aa3e96fb597cc4f8a2aeb87f3a71cf5fe",
-    "tamanho": 96411136
+    "versao": "3.17.5",
+    "url": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/456b3aae33b294da542428225ffc005b05516dd1/download/MesaPronta-3.17.5.exe.gz",
+    "sha256": "70d6313129899655721cf5d5da64cc89de94994da914559d88c482f2b0fc0497",
+    "tamanho": 96413184
   },
   "x86": {
     "versao_atual": "3.17.5",
     "download": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/main/download/MesaPronta-32bits.zip",
-    "mensagem": "Versão 3.17.5 (Windows de 32 bits): a impressão pelo navegador sai em pé e numa folha só, do tamanho do papel. Seus dados continuam."
+    "mensagem": "Versão 3.17.5 (Windows de 32 bits): a impressão pelo navegador sai em pé e numa folha só, do tamanho do papel. Seus dados continuam.",
+    "exe": {
+      "versao": "3.17.5",
+      "url": "https://raw.githubusercontent.com/gabriel-rod7/mesapronta-status/456b3aae33b294da542428225ffc005b05516dd1/download/MesaPronta-3.17.5-32bits.exe.gz",
+      "sha256": "86f01e59d8c08de35719670159c5016dc9f2c7b0110b43f0182e7cfb27be3fe8",
+      "tamanho": 79425536
+    }
   }
 }
